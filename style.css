@@ -18,6 +18,15 @@
   text-decoration: none;
 }
 
+.item-card .img4 {
+  width: 71%;
+  height: 71%;
+}
+.item-card .img6 {
+  width: 70%;
+  height: 70%;
+}
+
 .active {
   font-weight: 600;
 }
