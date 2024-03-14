@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style-ls.css">
+</head>
+<body>
+
+<div class="container mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card p-3">
+        <div class="card-body">
+            <!-- <div class="card-header fs-1"> -->
+                <h3 class="bold mb-4">Sign Up</h3>
+              <!-- </div> -->
+          <form>
+            <div class="form-group">
+              <label for="username" class="medium">Username</label>
+              <input type="text" class="form-control" id="username" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+              <label for="email" class="medium">Email address</label>
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+              <label for="password" class="medium">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <div class="form-group medium">
+              <label for="confirmPassword" class="medium">Confirm Password</label>
+              <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block medium">Sign Up</button>
+          </form>
+          <p class="text-center mt-3 small-link">Already have an account? <a href="./login.html">Login</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

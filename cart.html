@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DriedDelights - Cart Page</title>
+
+    <!-- Bootstrap CSS -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./cart.css">
+    
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="./index.html">
+            <div class="flex">
+              <img src="./img/vecteezy_a-creative-dd-letter-logo-with-a-vegan-food-logo-concept_6690006-ai.png"
+                class="brand-logo" alt="" />
+              <h4 class="pt-3 logot">DriedDelights</h4>
+            </div>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-md-auto gap-2">
+              <li class="nav-item rounded">
+                <a class="nav-link" aria-current="page" href="./index.html"><i
+                    class="bi bi-house-fill me-2"></i>Home</a>
+              </li>
+              <!-- <li class="nav-item rounded">
+                <a class="nav-link" href="#"><i class="bi bi-people-fill me-2"></i>Products</a>
+              </li> -->
+              <li class="nav-item rounded">
+                <a class="nav-link" href="./aboutus.html"><i class="bi bi-telephone-fill me-2"></i>About Us</a>
+              </li>
+              <li class="nav-item rounded">
+                <a class="nav-link active" href="./cart.html"><i class="bi bi-telephone-fill me-2"></i>Cart</a>
+              </li>
+              <li class="nav-item rounded">
+                <a class="nav-link" href="./signup.html"><i class="bi bi-telephone-fill me-2"></i>Signup</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <section class="h-100 gradient-custom">
+        <div class="container py-5">
+            <div class="row d-flex justify-content-center my-4">
+                <div class="col-md-8">
+                    <div class="card mb-4">
+                        <div class="card-header py-3">
+                            <h5 class="mb-0">Cart - <span id="itemCount">0</span> items</h5>
+                        </div>
+                        <div class="card-body" id="cartItems">
+                            <!-- Cart items will be dynamically added here -->
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <p><strong>Expected shipping delivery</strong></p>
+                            <p class="mb-0">12.10.2020 - 14.10.2020</p>
+                        </div>
+                    </div>
+                    <div class="card mb-4 mb-lg-0">
+                        <div class="card-body">
+                            <p><strong>We accept</strong></p>
+                            <img class="me-2" width="100px"
+                                src="https://cdn.iconscout.com/icon/free/png-256/free-razorpay-1649771-1399875.png?f=webp"
+                                alt="Razorpay" />
+                            <img class="me-2" width="90px"
+                                src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+                                alt="Visa" />
+                            <img class="me-2" width="90px"
+                                src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+                                alt="American Express" />
+                            <!-- <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Nm8m7k6xcno1uq" async> </script> </form> -->
+                            <!-- <img class="me-2" width="45px"
+                                src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce/includes/gateways/paypal/assets/images/paypal.webp"
+                                alt="PayPal acceptance mark" /> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-header py-3">
+                            <h5 class="mb-0">Summary</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush" id="summaryList">
+                                <!-- Summary details will be dynamically added here -->
+                            </ul>
+                            <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Nm8m7k6xcno1uq" async> </script> </form>
+                            <!-- <button type="button" class="btn btn-primary btn-lg btn-block">
+                                Go to checkout
+                            </button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <button type="button" class="btn btn-danger" onclick="resetCart()">Clear Cart</button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="./cart.js"></script>
+
+
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+    displayCartItems();
+    updateSummary();
+});
+
+// Function to display items in the cart
+function displayCart() {
+    var cartItemsDiv = document.getElementById("cartItems");
+    cartItemsDiv.innerHTML = ""; // Clear previous items
+
+    // Retrieve cart data from local storage
+    var cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Iterate through each item in the cart
+    cart.forEach(function(item, index) {
+        // Create HTML elements for the item
+        var itemDiv = document.createElement("div");
+        itemDiv.classList.add("row", "mb-3");
+        itemDiv.innerHTML = `
+            <div class="col-md-3">
+                <img src="${item.image}" class="img-fluid" alt="Product Image">
+            </div>
+            <div class="col-md-6">
+                <h6>${item.name}</h6>
+                <p>₹${item.price.toFixed(2)}</p>
+                <p>Quantity: ${item.quantity}</p>
+            </div>
+            <div class="col-md-3 text-end">
+                <button type="button" class="btn btn-danger" onclick="removeFromCart(${index})">Remove</button>
+            </div>
+        `;
+
+        // Append the item HTML to the cartItemsDiv
+        cartItemsDiv.appendChild(itemDiv);
+    });
+
+    // Update the item count in the cart
+    document.getElementById("itemCount").textContent = cart.length;
+
+    // Display summary
+    displaySummary(cart);
+}
+
+// Call displayCart function to display items in the cart when the page loads
+displayCart();
+
+
+// Function to display summary of items in the cart
+function displaySummary(cart) {
+    var summaryList = document.getElementById("summaryList");
+    summaryList.innerHTML = ""; // Clear previous summary
+
+    var totalPrice = 0;
+
+    // Iterate through each item in the cart
+    cart.forEach(function(item) {
+        // Calculate the total price for each item (price * quantity)
+        var itemTotal = item.price * item.quantity;
+        totalPrice += itemTotal;
+
+        // Create HTML elements for the item summary
+        var summaryItem = document.createElement("li");
+        summaryItem.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+        summaryItem.innerHTML = `
+            ${item.name} x ${item.quantity}
+            <span>₹${itemTotal.toFixed(2)}</span>
+        `;
+
+        // Append the item summary HTML to the summaryList
+        summaryList.appendChild(summaryItem);
+    });
+
+    // Update the total price in the summary
+    var totalAmount = document.createElement("li");
+    totalAmount.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center", "border-0", "px-0", "mb-3");
+    totalAmount.innerHTML = `
+        <div>
+            <strong>Total amount</strong>
+            <strong>
+                <p class="mb-0">(including VAT)</p>
+            </strong>
+        </div>
+        <span><strong>₹${totalPrice.toFixed(2)}</strong></span>
+    `;
+    summaryList.appendChild(totalAmount);
+}
+
+// Function to remove item from the cart
+function removeFromCart(index) {
+    // Retrieve cart data from local storage
+    var cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Remove the item at the specified index from the cart array
+    cart.splice(index, 1);
+
+    // Update the cart in local storage
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // Redisplay the cart and summary
+    displayCart();
+}
+
+    </script>
+</body>
+
+</html>
